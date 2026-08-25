@@ -51,7 +51,7 @@ const PROJECTS = [
   },
   {
     client: "Barchart",
-    title: "Estande Corporativo",
+    title: "cmdtyView — Estande Corporativo",
     category: "Estande Corporativo",
     year: "2026",
     folder: "barchart",
