@@ -1,0 +1,241 @@
+.admin-logout-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: transparent;
+  border: 1px solid var(--ink);
+  padding: 8px 16px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.admin-logout-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.admin-login-wrap {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  padding: 48px 0;
+}
+
+.admin-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 40px;
+  margin-bottom: 32px;
+}
+
+.admin-login-card {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.admin-card h1,
+.admin-card h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  margin: 0 0 24px;
+}
+
+.admin-field {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.admin-field span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.admin-field input[type="text"],
+.admin-field input[type="email"],
+.admin-field input[type="password"],
+.admin-field input[type="file"] {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+.admin-field input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.admin-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.admin-submit {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+}
+
+.admin-form-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.admin-error {
+  color: var(--accent);
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.admin-progress {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted);
+  margin: 12px 0;
+}
+
+.admin-existing-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -8px 0 18px;
+}
+
+.admin-existing-images:empty {
+  margin: 0;
+}
+
+.admin-existing-thumb {
+  position: relative;
+  width: 90px;
+  height: 68px;
+  border: 1px solid var(--line);
+}
+
+.admin-existing-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-existing-thumb button {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-existing-thumb button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.admin-project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-project-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.admin-project-row img {
+  width: 72px;
+  height: 54px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.admin-project-row-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-project-row-client {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.admin-project-row-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  margin: 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.admin-project-row-cat {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.admin-project-row-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.admin-row-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.admin-row-btn:hover {
+  border-color: var(--ink);
+}
+
+.admin-row-btn.danger:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .admin-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .admin-card {
+    padding: 24px;
+  }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Admin — Lucas Barrios</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="../index.html" class="brand">LUCAS BARRIOS <small>ADMIN</small></a>
+    <button id="logoutBtn" class="admin-logout-btn" hidden>Sair</button>
+  </div>
+</header>
+
+<!-- TELA DE LOGIN -->
+<section class="admin-login-wrap" id="loginScreen">
+  <div class="wrap">
+    <form class="admin-card admin-login-card" id="loginForm">
+      <p class="eyebrow">// ACESSO RESTRITO</p>
+      <h1>Entrar</h1>
+      <label class="admin-field">
+        <span>E-mail</span>
+        <input type="email" id="loginEmail" required autocomplete="username" />
+      </label>
+      <label class="admin-field">
+        <span>Senha</span>
+        <input type="password" id="loginPassword" required autocomplete="current-password" />
+      </label>
+      <p class="admin-error" id="loginError" hidden></p>
+      <button type="submit" class="contact-link primary admin-submit">Entrar</button>
+    </form>
+  </div>
+</section>
+
+<!-- PAINEL (só aparece logado) -->
+<section class="admin-dashboard-wrap" id="dashboard" hidden>
+  <div class="wrap">
+
+    <div class="admin-card">
+      <p class="eyebrow">// NOVO PROJETO</p>
+      <h2 id="formTitle">Adicionar projeto</h2>
+      <form id="projectForm">
+        <input type="hidden" id="projectId" value="" />
+
+        <div class="admin-grid-2">
+          <label class="admin-field">
+            <span>Cliente</span>
+            <input type="text" id="fieldClient" required />
+          </label>
+          <label class="admin-field">
+            <span>Título do projeto</span>
+            <input type="text" id="fieldTitle" required />
+          </label>
+        </div>
+
+        <div class="admin-grid-2">
+          <label class="admin-field">
+            <span>Categoria</span>
+            <input type="text" id="fieldCategory" required list="categoryOptions" placeholder="ex: Ativação de Marca" />
+            <datalist id="categoryOptions"></datalist>
+          </label>
+          <label class="admin-field">
+            <span>Ano</span>
+            <input type="text" id="fieldYear" required />
+          </label>
+        </div>
+
+        <label class="admin-field">
+          <span>Fotos (a primeira vira a capa do card — arraste pra reordenar)</span>
+          <input type="file" id="fieldImages" accept="image/*" multiple />
+        </label>
+
+        <div id="existingImages" class="admin-existing-images"></div>
+
+        <div id="uploadProgress" class="admin-progress" hidden></div>
+
+        <div class="admin-form-actions">
+          <button type="submit" class="contact-link primary admin-submit" id="submitBtn">Salvar projeto</button>
+          <button type="button" class="contact-link" id="cancelEditBtn" hidden>Cancelar edição</button>
+        </div>
+        <p class="admin-error" id="formError" hidden></p>
+      </form>
+    </div>
+
+    <div class="admin-card">
+      <p class="eyebrow">// PROJETOS PUBLICADOS</p>
+      <h2>Todos os projetos</h2>
+      <div id="projectList" class="admin-project-list"></div>
+    </div>
+
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/supabase-client.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
