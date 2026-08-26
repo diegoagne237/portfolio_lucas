@@ -1,3 +1,7 @@
+[hidden] {
+  display: none !important;
+}
+
 .admin-logout-btn {
   font-family: var(--font-mono);
   font-size: 12px;
