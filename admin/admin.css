@@ -64,7 +64,8 @@
 .admin-field input[type="text"],
 .admin-field input[type="email"],
 .admin-field input[type="password"],
-.admin-field input[type="file"] {
+.admin-field input[type="file"],
+.admin-field textarea {
   width: 100%;
   font-family: var(--font-body);
   font-size: 15px;
@@ -73,6 +74,18 @@
   background: var(--bg);
   color: var(--ink);
   box-sizing: border-box;
+}
+
+.admin-field textarea {
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.admin-success {
+  color: #1a7f3c;
+  font-size: 13px;
+  margin-top: 12px;
 }
 
 .admin-field input:focus {

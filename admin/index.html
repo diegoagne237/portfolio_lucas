@@ -47,6 +47,54 @@
   <div class="wrap">
 
     <div class="admin-card">
+      <p class="eyebrow">// TEXTOS DO SITE</p>
+      <h2>Editar conteúdo</h2>
+      <form id="contentForm">
+        <label class="admin-field">
+          <span>Frase de baixo do título (topo do site)</span>
+          <textarea id="cfHeroLede" rows="3" required></textarea>
+        </label>
+
+        <div class="admin-grid-2">
+          <label class="admin-field">
+            <span>Clientes (topo do site)</span>
+            <input type="text" id="cfHeroClientes" required />
+          </label>
+          <label class="admin-field">
+            <span>Especialidade (topo do site)</span>
+            <input type="text" id="cfHeroEspecialidade" required />
+          </label>
+        </div>
+
+        <label class="admin-field">
+          <span>Base (cidade, topo do site)</span>
+          <input type="text" id="cfHeroBase" required />
+        </label>
+
+        <label class="admin-field">
+          <span>Texto da seção Sobre</span>
+          <textarea id="cfAboutText" rows="6" required></textarea>
+        </label>
+
+        <label class="admin-field">
+          <span>Tags da seção Sobre (separadas por vírgula)</span>
+          <input type="text" id="cfAboutTags" required placeholder="SketchUp, Photoshop, Modelagem arquitetônica" />
+        </label>
+
+        <label class="admin-field">
+          <span>Frase da seção Contato</span>
+          <input type="text" id="cfContactHeading" required />
+        </label>
+
+        <div class="admin-form-actions">
+          <button type="submit" class="contact-link primary admin-submit" id="contentSubmitBtn">Salvar textos</button>
+        </div>
+        <p class="admin-success" id="contentSuccess" hidden>Textos atualizados!</p>
+        <p class="admin-error" id="contentError" hidden></p>
+      </form>
+    </div>
+
+    <div class="admin-card">
       <p class="eyebrow">// NOVO PROJETO</p>
       <h2 id="formTitle">Adicionar projeto</h2>
       <form id="projectForm">

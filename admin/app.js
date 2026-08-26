@@ -46,6 +46,7 @@ function showDashboard() {
   dashboard.hidden = false;
   logoutBtn.hidden = false;
   loadProjectList();
+  loadSiteContentForm();
 }
 
 supabaseClient.auth.getSession().then(({ data }) => {
@@ -114,6 +115,78 @@ function renderExistingImages() {
     existingImagesDiv.appendChild(div);
   });
 }
+
+// ------------------------------------------------------------
+// TEXTOS DO SITE
+// ------------------------------------------------------------
+
+const contentForm = document.getElementById("contentForm");
+const contentSubmitBtn = document.getElementById("contentSubmitBtn");
+const contentSuccess = document.getElementById("contentSuccess");
+const contentError = document.getElementById("contentError");
+
+const cfHeroLede = document.getElementById("cfHeroLede");
+const cfHeroClientes = document.getElementById("cfHeroClientes");
+const cfHeroEspecialidade = document.getElementById("cfHeroEspecialidade");
+const cfHeroBase = document.getElementById("cfHeroBase");
+const cfAboutText = document.getElementById("cfAboutText");
+const cfAboutTags = document.getElementById("cfAboutTags");
+const cfContactHeading = document.getElementById("cfContactHeading");
+
+async function loadSiteContentForm() {
+  const { data, error } = await supabaseClient
+    .from("site_content")
+    .select("*")
+    .eq("id", 1)
+    .single();
+
+  if (error || !data) return;
+
+  cfHeroLede.value = data.hero_lede || "";
+  cfHeroClientes.value = data.hero_clientes || "";
+  cfHeroEspecialidade.value = data.hero_especialidade || "";
+  cfHeroBase.value = data.hero_base || "";
+  cfAboutText.value = data.about_text || "";
+  cfAboutTags.value = (data.about_tags || []).join(", ");
+  cfContactHeading.value = data.contact_heading || "";
+}
+
+contentForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  contentSuccess.hidden = true;
+  contentError.hidden = true;
+  contentSubmitBtn.disabled = true;
+  contentSubmitBtn.textContent = "Salvando...";
+
+  const payload = {
+    id: 1,
+    hero_lede: cfHeroLede.value.trim(),
+    hero_clientes: cfHeroClientes.value.trim(),
+    hero_especialidade: cfHeroEspecialidade.value.trim(),
+    hero_base: cfHeroBase.value.trim(),
+    about_text: cfAboutText.value.trim(),
+    about_tags: cfAboutTags.value
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean),
+    contact_heading: cfContactHeading.value.trim(),
+  };
+
+  const { error } = await supabaseClient
+    .from("site_content")
+    .upsert(payload);
+
+  contentSubmitBtn.disabled = false;
+  contentSubmitBtn.textContent = "Salvar textos";
+
+  if (error) {
+    contentError.textContent = "Erro ao salvar: " + error.message;
+    contentError.hidden = false;
+  } else {
+    contentSuccess.hidden = false;
+    setTimeout(() => (contentSuccess.hidden = true), 3000);
+  }
+});
 
 // ------------------------------------------------------------
 // CARREGAR LISTA DE PROJETOS

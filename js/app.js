@@ -147,7 +147,44 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") prevImg();
 });
 
+async function loadSiteContent() {
+  try {
+    const { data, error } = await supabaseClient
+      .from("site_content")
+      .select("*")
+      .eq("id", 1)
+      .single();
+
+    if (error) throw error;
+    if (!data) return;
+
+    document.getElementById("heroLede").textContent = data.hero_lede;
+    document.getElementById("heroClientes").textContent = data.hero_clientes;
+    document.getElementById("heroEspecialidade").textContent =
+      data.hero_especialidade;
+    document.getElementById("heroBase").textContent = data.hero_base;
+    document.getElementById("aboutText").textContent = data.about_text;
+    document.getElementById("contactHeading").textContent =
+      data.contact_heading;
+
+    const tagsList = document.getElementById("aboutTags");
+    tagsList.innerHTML = "";
+    (data.about_tags || []).forEach((tag) => {
+      const li = document.createElement("li");
+      li.textContent = tag;
+      tagsList.appendChild(li);
+    });
+  } catch (err) {
+    console.warn(
+      "Usando textos padrão do HTML (Supabase indisponível):",
+      err
+    );
+    // não faz nada — o HTML já tem o texto atual escrito nele
+  }
+}
+
 (async function init() {
+  loadSiteContent();
   ALL_PROJECTS = await loadProjects();
   renderFilters(ALL_PROJECTS);
   renderGrid(ALL_PROJECTS, null);

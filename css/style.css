@@ -222,7 +222,7 @@ a {
   font-size: 12px;
 }
 
-.hero-meta div span {
+.hero-meta-label {
   display: block;
   color: var(--muted);
   text-transform: uppercase;
