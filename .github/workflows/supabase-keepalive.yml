@@ -1,0 +1,21 @@
+name: Supabase keepalive
+
+on:
+  schedule:
+    # segunda e quinta, 12:00 UTC (maior intervalo entre pings: 4 dias)
+    - cron: "0 12 * * 1,4"
+  workflow_dispatch: # permite rodar na mão pela aba Actions
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Consulta a tabela projects
+        run: |
+          curl -fsS \
+            -H "apikey: ${{ env.SUPABASE_ANON_KEY }}" \
+            -H "Authorization: Bearer ${{ env.SUPABASE_ANON_KEY }}" \
+            "${{ env.SUPABASE_URL }}/rest/v1/projects?select=id&limit=1"
+        env:
+          SUPABASE_URL: https://qysqpnlfsahxectikvyn.supabase.co
+          SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5c3Fwbmxmc2FoeGVjdGlrdnluIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc3MDk2NjIsImV4cCI6MjEwMzI4NTY2Mn0.AHOvc839XIjIB5ib17Ac2jlD3L5PQSuLl8fKL21ku2w
